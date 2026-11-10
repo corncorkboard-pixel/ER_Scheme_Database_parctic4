@@ -1,0 +1,20 @@
+sudo pg_dropcluster --stop 18 main ; sudo pg_createcluster 18 main --start
+sudo service postgresql stop || service postgresql stop &&  sudo service postgresql start || service postgresql start ; service postgresql status  || sudo service postgresql status && nmap localhost localhost -p 5432 | grep 'tcp'
+sudo -u postgres createdb college
+sudo -u postgres createuser collage
+CREATE USER collage WITH PASSWORD 'collage';
+CREATE DATABASE college WITH ENCODING 'UTF8';
+ALTER DATABASE college OWNER TO collage;
+CREATE SCHEMA college; 
+SELECT version();
+SELECT current_database();
+SELECT current_user;
+SELECT schema_name FROM information_schema.schemata;
+EXIT;
+GRANT ALL ON SCHEMA college TO collage;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA college TO collage;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA college TO collage;
+ALTER DEFAULT PRIVILEGES IN SCHEMA college GRANT ALL ON TABLES TO collage;
+ALTER DEFAULT PRIVILEGES IN SCHEMA college GRANT ALL ON SEQUENCES TO collage;
+sudo -u postgres psql -d college
+DBeaver Version: 26.1.5-0 | PostgreSQL Version: (PostgreSQL) 18.6 (Debian 18.6-3)
